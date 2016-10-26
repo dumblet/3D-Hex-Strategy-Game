@@ -29,6 +29,10 @@ public class Map : MonoBehaviour {
 
 				hex_go.name = "Hex_" + x + "_" + y;
 
+				// give hexes their position so they can calculate their neighbors
+				hex_go.GetComponent<Hex> ().x = x;
+				hex_go.GetComponent<Hex> ().y = y;
+
 				hex_go.transform.SetParent (this.transform);
 			
 			}
