@@ -6,8 +6,8 @@ public class Map : MonoBehaviour {
 	public GameObject hexPrefab;
 
 	//size of the map by hex tiles
-	int width = 20;
-	int height = 20;
+	int width = 5;
+	int height = 5;
 
 	//offsets to line up hex tiles
 	float xOffset = 1.77f;

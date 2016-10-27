@@ -3,6 +3,8 @@ using System.Collections;
 
 public class MouseManager : MonoBehaviour {
 
+	int total = 0;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -23,18 +25,14 @@ public class MouseManager : MonoBehaviour {
 				Debug.Log ("Raycast hit " + ourHitObject.name); // transform parent name to get the object hexagon's parent which has the more useful name
 
 				GameObject[] neighbors = ourHitObject.GetComponent<Hex>().GetNeighbors ();
-				MeshRenderer[] mr = new MeshRenderer[6];
 
 				for (int i = 0; i < 6; i++) {
 					if (neighbors [i] != null) {
-						mr [i] = neighbors [i].GetComponentInChildren<MeshRenderer> ();
-						if (mr [i].material.color == Color.red) {
-							mr [i].material.color = Color.white;
-						} else {
-							mr [i].material.color = Color.red;
-						}
+						total += neighbors[i].GetComponent<Hex> ().switchColor ();
 					}
 				}
+
+				Debug.Log ("total =" + total);
 
 			}
 		}
