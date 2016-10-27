@@ -17,17 +17,23 @@ public class MouseManager : MonoBehaviour {
 		if (Physics.Raycast(ray, out hitInfo)) {
 			GameObject ourHitObject = hitInfo.collider.transform.parent.gameObject;
 
-			Debug.Log ("Raycast hit " + ourHitObject.name); // transform parent name to get the object hexagon's parent which has the more useful name
 
 			if (Input.GetMouseButtonDown(0)) {
-				MeshRenderer mr = ourHitObject.GetComponentInChildren<MeshRenderer> ();
-	
-				Hex[] neighbors = (Hex)ourHitObject.GetNeighbors ();
+				//MeshRenderer mr = ourHitObject.GetComponentInChildren<MeshRenderer> ();
+				Debug.Log ("Raycast hit " + ourHitObject.name); // transform parent name to get the object hexagon's parent which has the more useful name
 
-				if (mr.material.color == Color.red) {
-					mr.material.color = Color.white;
-				} else {
-					mr.material.color = Color.red;
+				GameObject[] neighbors = ourHitObject.GetComponent<Hex>().GetNeighbors ();
+				MeshRenderer[] mr = new MeshRenderer[6];
+
+				for (int i = 0; i < 6; i++) {
+					if (neighbors [i] != null) {
+						mr [i] = neighbors [i].GetComponentInChildren<MeshRenderer> ();
+						if (mr [i].material.color == Color.red) {
+							mr [i].material.color = Color.white;
+						} else {
+							mr [i].material.color = Color.red;
+						}
+					}
 				}
 
 			}

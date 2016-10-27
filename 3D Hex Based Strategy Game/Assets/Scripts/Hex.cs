@@ -4,15 +4,10 @@ using System.Collections;
 public class Hex : MonoBehaviour {
 
 	//This hex's position
-	int x;
-	int y;
+	public int x;
+	public int y;
 
-	public Hex LeftNeighbor(){
-		GameObject left = GameObject.Find ("Hex_" + (x - 1) + "_" + y);
-		return left; 
-	}
-
-	public Hex[] GetNeighbors(){
+	public GameObject[] GetNeighbors(){
 
 		//Hex[0] is left neighbor, goes clockwise, hex[5] is botleft
 
@@ -36,14 +31,49 @@ public class Hex : MonoBehaviour {
 			botLeft = GameObject.Find ("Hex_" + (x) + "_" + (y - 1));
 		}
 
-		Hex [0] = left;
-		Hex [1] = topLeft;
-		Hex [2] = topRight;
-		Hex [3] = right;
-		Hex [4] = botRight;
-		Hex [5] = botLeft;
+		/*Hex[] neighbors = new Hex[5];
+		if (left != null) {
+			neighbors [0] = left.GetComponent<Hex>();
+		}
+		if (topLeft != null) {
+			neighbors [1] = topLeft.GetComponent<Hex>();
+		}
+		if (topRight != null) {
+			neighbors [2] = topRight.GetComponent<Hex>();
+		}
+		if (right != null) {
+			neighbors [3] = right.GetComponent<Hex>();
+		}
+		if (botRight != null) {
+			neighbors [4] = botRight.GetComponent<Hex>();
+		}
+		if (botLeft != null) {
+			neighbors [5] = botLeft.GetComponent<Hex>();
+		}*/
 
-		return Hex;
+
+		GameObject[] neighbors = new GameObject[6];
+		if (left != null) {
+			neighbors [0] = left;
+		}
+		if (topLeft != null) {
+			neighbors [1] = topLeft;
+		}
+		if (topRight != null) {
+			neighbors [2] = topRight;
+		}
+		if (right != null) {
+			neighbors [3] = right;
+		}
+		if (botRight != null) {
+			neighbors [4] = botRight;
+		}
+		if (botLeft != null) {
+			neighbors [5] = botLeft;
+		}
+
+		return neighbors;
 
 	}
+
 }
