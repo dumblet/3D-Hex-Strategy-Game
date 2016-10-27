@@ -3,11 +3,12 @@ using System.Collections;
 
 public class MouseManager : MonoBehaviour {
 
-	int total = 0;
+	int totalReds = 0;
+	int totalHex = 0;
 
 	// Use this for initialization
 	void Start () {
-	
+		
 	}
 	
 	// Update is called once per frame
@@ -28,11 +29,11 @@ public class MouseManager : MonoBehaviour {
 
 				for (int i = 0; i < 6; i++) {
 					if (neighbors [i] != null) {
-						total += neighbors[i].GetComponent<Hex> ().switchColor ();
+						totalReds += neighbors[i].GetComponent<Hex> ().switchColor ();
 					}
 				}
 
-				Debug.Log ("total =" + total);
+				Debug.Log ("total =" + totalReds);
 
 			}
 		}
