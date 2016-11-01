@@ -6,16 +6,18 @@ public class Hex : MonoBehaviour {
 	//This hex's position
 	public int x;
 	public int y;
-	public int colorMode = 0; //1 if red, 0 if white. for game over purposes
+	Unit charInHex;
 
-	public int switchColor (){
+	public void switchToRed (){
 		MeshRenderer mr = this.GetComponentInChildren<MeshRenderer>();
-		if (mr.material.color == Color.red) {
-			mr.material.color = Color.white;
-			return -1;
-		} else {
+		if (mr.material.color != Color.red) {
 			mr.material.color = Color.red;
-			return 1;
+		}
+	}
+	public void switchToWhite (){
+		MeshRenderer mr = this.GetComponentInChildren<MeshRenderer>();
+		if (mr.material.color != Color.white) {
+			mr.material.color = Color.white;
 		}
 	}
 
@@ -66,6 +68,15 @@ public class Hex : MonoBehaviour {
 
 		return neighbors;
 
+	}
+
+	public void NowContainsChar(Unit u){
+		// links the character to the hex
+		charInHex = u;
+	}
+
+	public Unit CharInHex(){
+		return charInHex;
 	}
 
 }
